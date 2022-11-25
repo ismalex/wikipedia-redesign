@@ -10,7 +10,7 @@ export default function Sidebar() {
       <div className="sticky top-[60px] flex flex-col justify-between h-[90vh]">
         <ul>
           <li className="link">
-            <Link to={`/`}>Main Page</Link>
+            <Link to={`/wikipedia-redesign`}>Main Page</Link>
           </li>
           <li>My account</li>
           <li>Contents</li>
@@ -33,21 +33,6 @@ export default function Sidebar() {
             <li>Cookie statement</li>
           </ul>
           <License/>
-          {/* <div className="text-xs">{licenseNotes}</div>
-          <div className="text-xs">
-            <div>
-              design:
-              <WikiLink href={'https://instagram.com/kkkarterrr'}>
-                <span>@kkkarterrr</span>
-              </WikiLink>{' '}
-            </div>
-            <div>
-              code:{' '}
-              <WikiLink href={'https://github.com/ismalex'}>
-                <span>@ismalex</span>
-              </WikiLink>
-            </div>
-          </div> */}
         </div>
       </div>
     </aside>

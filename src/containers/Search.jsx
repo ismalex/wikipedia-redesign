@@ -10,7 +10,7 @@ export default function Search() {
 
   const handleSearch = (event) => {
     event.preventDefault()
-    navigate('/')
+    navigate('/wikipedia-redesign')
   }
 
   let searchHits = searchResults.searchinfo

@@ -14,7 +14,7 @@ export default function Header() {
     if (searchQuery === null) return
 
     getSearchResults(searchQuery)
-    navigate('/search')
+    navigate('/wikipedia-redesign/search')
   }
 
   const handleInputChange = (event) => {
@@ -23,7 +23,7 @@ export default function Header() {
 
   return (
     <header className="flex flex-col gap-4 md:flex-row w-full ">
-      <Link to={`/`} className="flex w-[350px]">
+      <Link to={`/wikipedia-redesign`} className="flex w-[350px]">
         <BsGlobe className="text-6xl" />
         <h1 className="ml-2">WIKIPEDIA</h1>
       </Link>

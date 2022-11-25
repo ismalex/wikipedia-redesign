@@ -10,15 +10,15 @@ import './index.css'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/wikipedia-redesign',
     element: <Layout />,
     children: [
       {
-        path: '/',
+        path: '',
         element: <Home />,
       },
       {
-        path: '/search',
+        path: 'search',
         element: <Search />,
       },
     ],
