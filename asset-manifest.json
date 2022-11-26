@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/wikipedia-redesign/static/css/main.f1a20f4c.css",
-    "main.js": "/wikipedia-redesign/static/js/main.4b0e17ff.js",
+    "main.css": "/wikipedia-redesign/static/css/main.7969c74c.css",
+    "main.js": "/wikipedia-redesign/static/js/main.79367a1c.js",
     "static/js/787.3012a1fb.chunk.js": "/wikipedia-redesign/static/js/787.3012a1fb.chunk.js",
     "index.html": "/wikipedia-redesign/index.html",
-    "main.f1a20f4c.css.map": "/wikipedia-redesign/static/css/main.f1a20f4c.css.map",
-    "main.4b0e17ff.js.map": "/wikipedia-redesign/static/js/main.4b0e17ff.js.map",
+    "main.7969c74c.css.map": "/wikipedia-redesign/static/css/main.7969c74c.css.map",
+    "main.79367a1c.js.map": "/wikipedia-redesign/static/js/main.79367a1c.js.map",
     "787.3012a1fb.chunk.js.map": "/wikipedia-redesign/static/js/787.3012a1fb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f1a20f4c.css",
-    "static/js/main.4b0e17ff.js"
+    "static/css/main.7969c74c.css",
+    "static/js/main.79367a1c.js"
   ]
 }
