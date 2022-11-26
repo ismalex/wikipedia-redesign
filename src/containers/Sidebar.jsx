@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import WikiLink from '../components/WikiLink'
 import { donateURL } from '../api/constant-info'
-import License from '../components/License'
+import LicenseInfo from '../components/LicenseInfo'
 
 export default function Sidebar() {
   return (
-    <aside className="hidden md:flex">
+    <aside className="hidden md:flex font-medium">
       <div className="sticky top-[60px] flex flex-col justify-between h-[90vh]">
-        <ul>
+        <ul className='leading-[17px]'>
           <li className="link">
             <Link to={`/wikipedia-redesign`}>Main Page</Link>
           </li>
@@ -22,7 +22,7 @@ export default function Sidebar() {
           </li>
         </ul>
         <div>
-          <ul className="mb-4">
+          <ul className="mb-5 leading-[17px]">
             <li>Privacy policy</li>
             <li>About Wikipedia</li>
             <li>Disclaimers</li>
@@ -32,7 +32,7 @@ export default function Sidebar() {
             <li>Statistics</li>
             <li>Cookie statement</li>
           </ul>
-          <License/>
+          <LicenseInfo/>
         </div>
       </div>
     </aside>

@@ -4,11 +4,11 @@ import Gallery from '../components/Gallery'
 import Trending from '../components/Trending'
 import ProjectList from '../components/ProjectList'
 import WikiLink from '../components/WikiLink'
+import LicenseInfo from '../components/LicenseInfo'
 import {
   wikiMediaFoundationURL,
   volunteerProjectsURL,
 } from '../api/constant-info'
-import License from '../components/License'
 
 export default function Home() {
   return (
@@ -49,7 +49,9 @@ export default function Home() {
         </p>
         <ProjectList />
       </section>
-      <License />
+      <section className='block md:hidden'>
+        <LicenseInfo />
+      </section>
     </>
   )
 }
