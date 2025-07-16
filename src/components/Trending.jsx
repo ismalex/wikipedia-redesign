@@ -1,11 +1,13 @@
-import { useContext } from 'react'
-import { GlobalContext } from '../context/GlobalContext'
+import React from 'react'
+import { useGlobalContext } from '../hooks';
 import TrendingItem from './TrendingItem'
 
 export default function Trending() {
-  const { trendingArticles } = useContext(GlobalContext)
+  const { isLoadingTrending, trendingArticles } = useGlobalContext();
+
+  if (isLoadingTrending) return <div>Loading...</div>
 
   return trendingArticles.map(({ article, views }) => 
-      <TrendingItem key={`trend-${article}`} title={article} views={views} />
+    <TrendingItem key={`trend-${article}`} title={article} views={views} />
   )
 }

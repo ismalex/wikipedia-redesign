@@ -2,32 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals'
-import Search from './containers/Search'
-import Layout from './containers/Layout'
-import Home from './containers/Home'
+import { routes } from './routes'
 import './index.css'
 
-const router = createBrowserRouter([
-  {
-    path: '/wikipedia-redesign',
-    element: <Layout />,
-    children: [
-      {
-        path: '',
-        element: <Home />,
-      },
-      {
-        path: 'search',
-        element: <Search />,
-      },
-    ],
-  },
-])
+const browserRouter = createBrowserRouter(routes);
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={browserRouter} />
   </React.StrictMode>,
 )
 

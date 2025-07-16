@@ -1,21 +1,23 @@
-export const queryAPIBaseURL = 'https://en.wikipedia.org/w/api.php?'
-export const v1APIBaseURL = {
-  trendingToday: `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/`,
-  featuredToday: `https://api.wikimedia.org/feed/v1/wikipedia/en/featured/`,
-}
-export const linkItemBaseURL = 'https://en.wikipedia.org/?curid='
-export const trendingItemBaseURL = 'https://en.wikipedia.org/wiki/'
+// SIDEBAR
+export const MENU_ITEMS = {
+  top: [
+    { id: 1, description: "My Account" },
+    { id: 2, description: "Contents" },
+    { id: 3, description: "Random Article" },
+  ],
+  bottom: [
+    { id: 1, description: "Privacy Policy" },
+    { id: 2, description: "About Wikipedia" },
+    { id: 3, description: "Disclaimers" },
+    { id: 4, description: "Contact Wikipedia" },
+    { id: 5, description: "Mobile View" },
+    { id: 6, description: "Developers" },
+    { id: 7, description: "Statistics" },
+    { id: 8, description: "Cookie Statement" },
+  ],
+};
 
-export const imgSourceFallBack =
-  'https://nightgalaxy.sellware.net/img/Noimage.jpg?nocache=1666914428437'
-
-export const wikiMediaFoundationURL =
-  'https://en.wikipedia.org/wiki/Wikimedia_Foundation'
-
-export const volunteerProjectsURL =
-  'https://wikimediafoundation.org/our-work/wikimedia-projects/'
-
-export const projectListInfo = [
+export const PROJECTS_LIST_INFO = [
   {
     title: 'Commons',
     description: '  Free media repository',
@@ -172,11 +174,21 @@ export const projectListInfo = [
   },
 ]
 
-export const donateURL =
-  'https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en'
+export const MAX_ARTICLES_SMALL_SCREENS = 6;
+export const IMAGE_SOURCE_FALLBACK = "https://nightgalaxy.sellware.net/img/Noimage.jpg?nocache=1666914428437"
+export const LICENSE_NOTES =
+  "Text is available under the Creative Commons Attribution-ShareAlikeLicense 3.0; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.";
+export const INSTAGRAM_CARTER = "https://instagram.com/kkkarterrr";
+export const GITHUB_ISMALEX = "https://github.com/ismalex";
 
-export const licenseNotes = `Text is available under the Creative Commons Attribution-ShareAlikeLicense 3.0; additional terms may apply. By using this site, you agree to the Terms of Use and Privacy Policy. Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit
-organization.`
+export const WIKIPEDIA_URLS = {
+  page_base_url: "https://en.wikipedia.org/?curid=",
+  trending_page_base_url: "https://en.wikipedia.org/wiki/",
+  draft_article: "https://en.wikipedia.org/wiki/Wikipedia:Article_wizard", 
+  new_redirect: "https://en.wikipedia.org/wiki/Wikipedia:Articles_for_creation/Redirects",
+  donate: "https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en",
+  wikimedia_foundation: "https://en.wikipedia.org/wiki/Wikimedia_Foundation",
+  volunteer_projects: "https://wikimediafoundation.org/our-work/wikimedia-projects/"
+}
 
-export const instaKkkraterrr = "https://instagram.com/kkkarterrr"
-export const githubIsmalex = "https://github.com/ismalex"
+

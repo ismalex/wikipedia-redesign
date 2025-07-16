@@ -1,40 +1,41 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import WikiLink from '../components/WikiLink'
-import { donateURL } from '../api/constant-info'
-import LicenseInfo from '../components/LicenseInfo'
+import React from "react";
+import { Link } from "react-router-dom";
+import WikiLink from "../components/WikiLink";
+import LicenseInfo from "../components/LicenseInfo";
+import { MENU_ITEMS, WIKIPEDIA_URLS } from "../consts";
+import Logo from "../components/Logo";
 
 export default function Sidebar() {
   return (
-    <aside className="hidden md:flex font-medium">
-      <div className="sticky top-[60px] flex flex-col justify-between h-[90vh]">
-        <ul className='leading-[17px]'>
-          <li className="link">
-            <Link to={`/wikipedia-redesign`}>Main Page</Link>
-          </li>
-          <li>My account</li>
-          <li>Contents</li>
-          <li>Random article</li>
-          <li>
-            <WikiLink href={donateURL}>
-              <span>Donate</span>
-            </WikiLink>
-          </li>
-        </ul>
+    <aside className="hidden md:block">
+      <div className="sticky top-4 flex flex-col justify-between h-[96vh]">
         <div>
-          <ul className="mb-5 leading-[17px]">
-            <li>Privacy policy</li>
-            <li>About Wikipedia</li>
-            <li>Disclaimers</li>
-            <li>Contact Wikipedia</li>
-            <li>Mobile view</li>
-            <li>Developers</li>
-            <li>Statistics</li>
-            <li>Cookie statement</li>
+          <Logo />
+          <ul className="leading-4 font-medium mt-3">
+            <li className="link">
+              <Link to={`/wikipedia-redesign`}>Main Page</Link>
+            </li>
+            {MENU_ITEMS.top.map(({ id, description }) => (
+              <li key={`top-${id}`} className="link">
+                {description}
+              </li>
+            ))}
+            <li>
+              <WikiLink href={WIKIPEDIA_URLS.donate}>Donate</WikiLink>
+            </li>
           </ul>
-          <LicenseInfo/>
+        </div>
+        <div>
+          <ul className="leading-4 font-medium">
+            {MENU_ITEMS.bottom.map(({ id, description }) => (
+              <li key={`bottom-${id}`} className="link">
+                {description}
+              </li>
+            ))}
+          </ul>
+          <LicenseInfo />
         </div>
       </div>
     </aside>
-  )
+  );
 }

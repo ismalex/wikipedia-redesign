@@ -1,40 +1,44 @@
-import { useContext } from 'react'
+import React from "react";
+import { useGlobalContext } from '../hooks'
 import { useNavigate } from 'react-router-dom'
-import { GlobalContext } from '../context/GlobalContext'
 import SectionTitle from '../components/SectionTitle'
 import SearchResultItem from '../components/SearchResultItem'
+import NoResultsMessage from '../components/NoResultsMessage';
+
 
 export default function Search() {
-  const navigate = useNavigate()
-  const { searchQuery, searchResults } = useContext(GlobalContext)
+  const navigate = useNavigate();
+  const { searchQuery, searchResults, isLoadingSearch } = useGlobalContext();
 
-  const handleSearch = (event) => {
-    event.preventDefault()
-    navigate('/wikipedia-redesign')
+  const handleBackButtonClick = (event) => {
+    event.preventDefault();
+    
+    navigate('/wikipedia-redesign');
   }
 
-  let searchHits = searchResults.searchinfo
-    ? `Results 1 – 20 of ${searchResults.searchinfo.totalhits}`
-    : ' '
+  if (isLoadingSearch) return <section className='p-2'>Loading...</section>
+  if (searchQuery === null && searchResults === null) return <section className='p-2'>Type something to start a new search.</section>
 
-  if (searchResults.search?.length === 0) return 'Loading...'
+  const searchHits = searchResults !== null && `Results 1 – ${searchResults.search.length} of ${searchResults.searchinfo.totalhits}`
 
   return (
-    <section className="mt-14">
+    <section>
       <SectionTitle title="Search results" />
-      <div className="mx-8 mb-4">{searchHits}</div>
-      {searchResults.search?.length !== 0 &&
-        searchResults.search?.map(({ title, snippet, pageid }) => (
-          <SearchResultItem
-            key={pageid}
-            query={searchQuery}
-            title={title}
-            smallDescription={snippet}
-            pageLinkId={pageid}
-          />
-        ))}
-      <div className="my-4 flex justify-center">
-        <button className="button" onClick={handleSearch}>
+      {(!isLoadingSearch && searchResults.search.length === 0)
+        ? <NoResultsMessage notFoundQuery={searchQuery}/>
+        : <div className="mx-8 mb-4 text-sm">{searchHits}</div>}
+     
+      {searchResults.search?.map(({ title, snippet, pageid }) => (
+        <SearchResultItem
+          key={pageid}
+          query={searchQuery}
+          title={title}
+          smallDescription={snippet}
+          pageLinkId={pageid}
+        />
+      ))}
+      <div className="my-4 text-center">
+        <button className="button" onClick={handleBackButtonClick}>
           Back
         </button>
       </div>

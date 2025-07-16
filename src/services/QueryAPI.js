@@ -1,56 +1,55 @@
-import { apiFunctions } from '../api'
-import { queryAPIBaseURL } from '../api/constant-info'
+import { apiFunctions } from "../api";
+import {
+  QUERY_API_BASE_URL,
+  RANDOM_ARTICLES_API_PARAMS,
+  SEARCH_RESULTS_API_PARAMS,
+} from "./constant-info";
 
-const searchParams = {
-  format: 'json',
-  action: 'query',
-  origin: '*',
-  inprop: 'url',
-  prop: 'info',
-  list: 'search',
-  srlimit: '20',
-}
-
-const randomArticlesParams = {
-  format: 'json',
-  action: 'query',
-  origin: '*',
-  generator: 'random',
-  grnnamespace: 0,
-  prop: 'pageimages|extracts',
-  piprop: 'original',
-  pilimit: 'max',
-  exintro: 2,
-  explaintext: 2,
-  exsentences: 2,
-  exlimit: 'max',
-  grnlimit: 13,
-}
-
-export async function searchResults(searchQuery) {
+//
+export async function getSearchResults(searchQuery) {
   try {
-    const generateSearchParams = { ...searchParams, srsearch: searchQuery }
+    const params = new URLSearchParams({
+      ...SEARCH_RESULTS_API_PARAMS,
+      srsearch: searchQuery,
+    });
 
-    const response = await apiFunctions.get(
-      queryAPIBaseURL,
-      generateSearchParams,
-    )
+    const response = await apiFunctions.get(QUERY_API_BASE_URL, params);
 
-    return response.query
+    return response.query;
   } catch (error) {
-    return console.error('Service error', error)
+    console.error("Failed to fetch search results", error);
   }
 }
 
-export async function randomArticles() {
+//
+export async function getRandomArticles() {
   try {
-    const response = await apiFunctions.get(
-      queryAPIBaseURL,
-      randomArticlesParams,
-    )
+    const params = new URLSearchParams({
+      ...RANDOM_ARTICLES_API_PARAMS,
+    });
 
-    return response.query.pages
+    const response = await apiFunctions.get(QUERY_API_BASE_URL, params);
+
+    return response.query.pages;
   } catch (error) {
-    return console.error('Service error', error)
+    console.error("Failed to fetch random articles:", error);
+  }
+}
+
+//
+export async function getRandomArticlesImages() {
+  try {
+    const params = new URLSearchParams({
+      ...RANDOM_ARTICLES_API_PARAMS,
+    });
+    const response = await apiFunctions.get(QUERY_API_BASE_URL, params);
+
+    const articlesWithImages = Object.values(response.query.pages).filter(
+      (article) => article?.thumbnail && article?.extract
+    );
+
+    return articlesWithImages || [];
+  } catch (error) {
+    console.error("Failed to fetch random articles with images:", error);
   }
 }

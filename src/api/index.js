@@ -4,16 +4,15 @@ export const apiFunctions = { get }
 
 async function get(baseURL, params, timeout = 7000) {
   try {
-    const response = await axios.get(baseURL, { params, timeout })
-   /*  console.log('from get', response) */
-    return processResponse(response)
+    const response = await axios.get(baseURL, { params, timeout });
+    return processResponse(response);
     
   } catch (error) {
-    throw processError(error)
+    throw processError(error);
   }
 }
 
-// CHJECK RESPONSE WHEN API IS NOT AVAILABLE
+// CHECK RESPONSE WHEN API IS NOT AVAILABLE
 function processResponse(response) {
   if (response.status === 200) {
     return response.data
@@ -23,5 +22,5 @@ function processResponse(response) {
 }
 
 function processError(error) {
-  return console.error('API error', error)
+  return console.error('API error:', error)
 }

@@ -1,33 +1,46 @@
-import moment from 'moment'
-import { apiFunctions } from '../api'
-import { v1APIBaseURL } from '../api/constant-info'
+import moment from "moment";
+import { apiFunctions } from "../api";
+import { V1_API_BASE_URL } from "./constant-info";
 
-/* const trendingBaseURL = `https://wikimedia.org/api/rest_v1/metrics/pageviews/top/en.wikipedia/all-access/`
+const yesterdaysDate = moment().subtract(1, "days").format("YYYY/MM/DD");
+const currentDay = moment().format("D");
+const currentMonth = moment().format("M");
 
-const articleOfTheDayBaseURL = `https://api.wikimedia.org/feed/v1/wikipedia/en/featured/` */
-
-let yesterdaysDate = moment().subtract(1, 'days').format('YYYY/MM/DD')
-
-export async function trendingArticlesToday() {
+//
+export async function getTrendingArticlesToday() {
   try {
     const response = await apiFunctions.get(
-      v1APIBaseURL.trendingToday + yesterdaysDate,
-    )
-    let [items] = response.items
-    return items.articles
+      `${V1_API_BASE_URL.trendingToday}${yesterdaysDate}`
+    );
+    const [item] = response.items;
+
+    return item.articles;
   } catch (error) {
-    return console.error('Service error', error)
+    return console.error("v1 API Service error:", error);
+  }
+}
+
+//
+export async function getSelectedOnThisDay() {
+  try {
+    const response = await apiFunctions.get(
+      `${V1_API_BASE_URL.selectedOnThisDay}${currentMonth}/${currentDay}`
+    );
+    console.log("response", response);
+    return response.selected.slice(1, 8);
+  } catch (error) {
+    return console.error("v1 API Service error:", error);
   }
 }
 
 export async function featuredArticlesToday() {
   try {
     const response = await apiFunctions.get(
-      v1APIBaseURL.featuredToday + yesterdaysDate,
-    )
-    /* console.log('art of the day ', response) */
-    return response
+      `${V1_API_BASE_URL.featuredToday}${yesterdaysDate}`
+    );
+
+    return response;
   } catch (error) {
-    return console.error('Service error', error)
+    return console.error("v1 API Service error:", error);
   }
 }

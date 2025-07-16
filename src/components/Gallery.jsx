@@ -1,23 +1,26 @@
-import React, { useContext } from 'react'
-import { GlobalContext } from '../context/GlobalContext'
-import GalleryItem from './GalleryItem'
+import React from "react";
+import { useGlobalContext } from "../hooks";
+import GalleryItem from "./GalleryItem";
 
 export default function Gallery() {
-  const { randomArticles } = useContext(GlobalContext)
+  const { isRandomLoading, randomArticlesImages } = useGlobalContext();
 
-  if (randomArticles.length === 0) return 'Loading...'
+  if (isRandomLoading) return <div>Loading...</div>;
 
   return (
     <div className="masonry-grid">
-      {randomArticles.map(({ title, original, extract, pageid }) => (
-        <GalleryItem
-          key={title}
-          pageLinkId={pageid}
-          title={title}
-          thumbnailSource={original?.source}
-          shortDescription={extract}
-        />
-      ))}
+      {randomArticlesImages.map(
+        ({ title, thumbnail, extract, pageid }, index) => (
+          <GalleryItem
+            id={index}
+            key={title}
+            pageLinkId={pageid}
+            title={title}
+            thumbnailSource={thumbnail?.source}
+            shortDescription={extract}
+          />
+        )
+      )}
     </div>
-  )
+  );
 }

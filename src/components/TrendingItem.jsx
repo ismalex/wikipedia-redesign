@@ -1,20 +1,22 @@
-import React from 'react'
-import { BsEyeFill } from 'react-icons/bs'
-import WikiLink from './WikiLink'
-import { trendingItemBaseURL } from '../api/constant-info'
+import React from "react";
+import WikiLink from "./WikiLink";
+import { BsEyeFill } from "react-icons/bs";
+import { WIKIPEDIA_URLS } from "../consts";
 
 export default function TrendingItem({ title, views }) {
-  const formatedViews = new Intl.NumberFormat('no-NO').format(views)
-
   return (
-    <div className="flex justify-between border-t-2 border-black p-2">
-      <WikiLink href={trendingItemBaseURL + title}>
-        <h2>{title}</h2>
-      </WikiLink>
-      <div className=" flex text-gray-400 font-medium">
-        <h3>{formatedViews}</h3>
-        <BsEyeFill className="text-3xl ml-2" />
+    <div className="flex gap-3 items-center justify-between p-2 border-black border-t-2 last:border-b-2">
+      <div className="flex-1 min-w-[200px]">
+        <WikiLink href={`${WIKIPEDIA_URLS.trending_page_base_url}${title}`}>
+          <h2 className="break-words">{title}</h2>
+        </WikiLink>
+      </div>
+      <div className="flex items-center gap-2 text-gray-400 flex-shrink-0">
+        <h3 className="font-medium whitespace-nowrap">
+          {Intl.NumberFormat("no-NO").format(views)}
+        </h3>
+        <BsEyeFill className="text-2xl" />
       </div>
     </div>
-  )
+  );
 }
